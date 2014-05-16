@@ -10,7 +10,7 @@
       <div class="col-xs-1">Likes : <%= cocktail.like %></div>
       <div class="col-xs-4"><ul>
         <% cocktail.dosages.each do |dosage| %>
-          <% unless dosage.quantity == 0 %>
+          <% unless (dosage.quantity == 0 || dosage.quantity == nil) %>
             <li><%= dosage.quantity %> of <%= Ingredient.find(dosage.ingredient_id).name %></li>
           <%end%>
         <% end %>
