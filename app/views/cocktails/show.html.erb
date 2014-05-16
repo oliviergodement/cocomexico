@@ -1,0 +1,18 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-5"><%= image_tag(@cocktail.photo_url, {size: '250x250'}) %></div>
+    <div class="col-xs-3"><h1><%= @cocktail.name %></h1></div>
+    <div class="col-xs-1">Likes : <%= @cocktail.like %></div>
+  </div>
+
+  <h2></h2>
+  <% @cocktail.dosages.each do |dosage| %>
+    <div class="row">
+      <%= dosage.quantity %> of <%= Ingredient.find(dosage.ingredient_id).name %></li>
+    </div>
+  <% end %>
+
+</div>
+
+<%= link_to "Return to cocktail list", cocktails_path %>

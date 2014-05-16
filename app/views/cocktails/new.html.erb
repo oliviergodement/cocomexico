@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Add a new cocktail</h1>
+
+  <div class="form">
+  <%= form_for @cocktail do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :photo_url %>
+      <%= f.text_field :photo_url, class: "form-control" %>
+    </div>
+    <div class="form-group">
+
+      <% Ingredient.all.each do |ingredient| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            <%= ingredient.name %>
+          </label>
+          <select name=<%=ingredient.name.downcase + "-quantity"%> class="form-control"> Quantity :
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      <% end %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+  </div>
+</div>
