@@ -3,16 +3,23 @@
   <div class="row">
     <div class="col-xs-5"><%= image_tag(@cocktail.photo_url, {size: '250x250'}) %></div>
     <div class="col-xs-3"><h1><%= @cocktail.name %></h1></div>
-    <div class="col-xs-1">Likes : <%= @cocktail.like %></div>
+
   </div>
 
-  <h2></h2>
+  <h3>Ingrédients</h3>
   <% @cocktail.dosages.each do |dosage| %>
     <div class="row">
       <%= dosage.quantity %> of <%= Ingredient.find(dosage.ingredient_id).name %></li>
     </div>
   <% end %>
 
+  <div class="row">
+    <h3>Description</h3>
+    <%= @cocktail.description%>
+  </div>
+
 </div>
+
+<%= link_to("Delete cocktail", @cocktail, method: "delete") %>
 
 <%= link_to "Return to cocktail list", cocktails_path %>

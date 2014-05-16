@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'welcome#index', as: :welcome
+
   resources :cocktails
   resources :ingredients
 

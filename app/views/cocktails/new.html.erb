@@ -11,25 +11,31 @@
       <%= f.label :photo_url %>
       <%= f.text_field :photo_url, class: "form-control" %>
     </div>
-    <div class="form-group">
 
-      <% Ingredient.all.each do |ingredient| %>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            <%= ingredient.name %>
-          </label>
-          <select name=<%=ingredient.name.downcase + "-quantity"%> class="form-control"> Quantity :
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-      <% end %>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
     </div>
+
+
+    <% Ingredient.all.each do |ingredient| %>
+      <div class="form-group">
+        <h3><%= ingredient.name %></h3>
+
+        <%= f.fields_for :dosages, @cocktail.dosages.build do |dosage_f| %>
+
+          <%= dosage_f.hidden_field :ingredient_id, value: ingredient.id %>
+          <div class="form-group">
+            <%= dosage_f.label :quantity %>
+            <%= dosage_f.text_field :quantity, class: "form-control" %>
+          </div>
+
+        <% end %>
+      </div>
+    <% end %>
+
     <%= f.submit %>
   <% end %>
   </div>
+
 </div>

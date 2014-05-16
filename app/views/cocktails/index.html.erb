@@ -1,17 +1,20 @@
-<h1>Cocomexico Cocktails</h1>
-
 <div class="container">
+  <div class="row">
+    <div class="col-xs-6"><h1>Cocomexico Cocktails</h1></div>
+    <div class="col-xs-3 pull-right"><%= link_to 'Add a new cocktail', new_cocktail_path%></div>
+  </div>
   <% @cocktails.each do |cocktail| %>
     <div class="row">
       <div class="col-xs-2"><%= link_to(cocktail.name, cocktail_path(cocktail.id)) %></div>
       <div class="col-xs-3"><%= image_tag(cocktail.photo_url, {size: '150x150'}) %></div>
       <div class="col-xs-1">Likes : <%= cocktail.like %></div>
-      <div class="col-xs-5"><ul>
+      <div class="col-xs-4"><ul>
         <% cocktail.dosages.each do |dosage| %>
         <li><%= dosage.quantity %> of <%= Ingredient.find(dosage.ingredient_id).name %></li>
         <% end %>
         </ul>
       </div>
+      <div class="col-xs-2"><%= cocktail.description %></div>
     </div>
   <% end %>
 </div>

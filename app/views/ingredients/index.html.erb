@@ -1,0 +1,15 @@
+<div class="container">
+
+  <div class="row"><h1>Ingredients list</h1></div>
+  <% @ingredients.each do |ingredient| %>
+  <div class="row">
+    <div class="col-sm-3"><%= ingredient.name %></div>
+    <div class="col-sm-3"><%= image_tag(ingredient.photo_url, {size: '150x150'}) %></div>
+  </div>
+  <% end %>
+
+<div class="row">
+<%= link_to 'Add a new ingredient', new_ingredient_path %>
+</div>
+
+</div>
