@@ -7,8 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div>
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=<%= welcome_path %>><i class="icon-large icon-drink"></i> Cocomexico</a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href=<%= cocktails_path%>>Cocktails <span class="badge"><%= Cocktail.all.count %></span></a></li>
+        <li><a href=<%= ingredients_path%>>Ingredients <span class="badge"><%= Ingredient.all.count %></span></a></li>
+        <li><a href=<%= new_cocktail_path%>>Add a cocktail</a></li>
+        <li><a href=<%= new_ingredient_path%>>Add an ingredient</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
 <%= yield %>
-
 </body>
 </html>

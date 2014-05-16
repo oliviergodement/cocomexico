@@ -16,6 +16,13 @@ class IngredientsController < ApplicationController
   end
 
   def show
+    @ingredient = Ingredient.find(params[:id])
+    @cocktails = []
+    Dosage.where(ingredient_id: params[:id]).each do |dosage|
+      if Cocktail.exists?(dosage.cocktail_id)
+        @cocktails << Cocktail.find(dosage.cocktail_id)
+      end
+    end
   end
 
   def destroy

@@ -1,2 +1,23 @@
-<h1>Ingredients#show</h1>
-<p>Find me in app/views/ingredients/show.html.erb</p>
+<div class="container">
+
+<div class="row">
+  <h2>Cocktails with <%= @ingredient.name %></h2>
+</div>
+
+ <% @cocktails.each do |cocktail| %>
+    <div class="row">
+      <div class="col-xs-2"><%= link_to(cocktail.name, cocktail_path(cocktail.id)) %></div>
+      <div class="col-xs-3"><%= image_tag(cocktail.photo_url, {size: '150x150'}) %></div>
+      <div class="col-xs-1">Likes : <%= cocktail.like %></div>
+      <div class="col-xs-4"><ul>
+        <% cocktail.dosages.each do |dosage| %>
+        <li><%= dosage.quantity %> of <%= Ingredient.find(dosage.ingredient_id).name %></li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="col-xs-2"><%= cocktail.description %></div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Return to ingredients list', ingredients_path %>
